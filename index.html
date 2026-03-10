@@ -128,7 +128,8 @@ body {
   color: #fff;
 }
 
-.hero h1 span { color: var(--green); }
+.hero h1 .hero-properly { color: var(--green); }
+.hero-sub-title { color: var(--green); }
 
 .hero-sub {
   font-size: 16px;
@@ -516,6 +517,43 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.hero-divider {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 18px;
+  color: #fff;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-glow);
+  border: 1px solid var(--green-border);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.hero-sub-title {
+  font-size: 0.75em;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.hero-properly {
+  color: var(--green);
+}
 </style>
 </head>
 <body>
@@ -533,18 +571,13 @@ body {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">
-    <span class="hero-badge-dot"></span>
-    Free · No paywalls · No YouTube
-  </div>
-  <h1>Music done<br><span>properly.</span></h1>
+  <h1>MusikBot<br><span class="hero-sub-title">Music done properly.</span></h1>
   <p class="hero-sub">A high-performance Discord music bot built for servers that actually care about audio quality, stability, and a great user experience.</p>
   <div class="hero-actions">
-    <a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=2151147776" class="btn-primary" target="_blank">
-      <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
-      Add to Discord
-    </a>
-    <span class="hero-note">Free forever · Spotify, Apple Music & SoundCloud</span>
+    <div class="hero-pill">
+      <span class="hero-badge-dot"></span>
+      Free forever · Spotify, Apple Music &amp; SoundCloud
+    </div>
   </div>
 </section>
 
@@ -578,7 +611,7 @@ body {
     <div class="feature-card">
       <span class="feature-card-icon">🎯</span>
       <strong>Fuzzy Autocomplete Everywhere</strong>
-      <p>Jump, move, or remove any track without typing the full title. Works across every command that needs it.</p>
+      <p>Jump, move, seek, or remove any track without typing the full title. Works across every command that needs it.</p>
     </div>
 
     <div class="feature-card">
@@ -621,6 +654,17 @@ body {
 </section>
 
 
+<!-- FREE -->
+<section class="free-section" style="max-width:720px;margin:0 auto;padding:0 24px 56px;border-bottom:none;">
+  <div class="free-card">
+    <div class="free-card-emoji">🎵</div>
+    <div>
+      <strong>100% Free. No paywalls.</strong>
+      <p>No vote-locking, no premium tiers, no nonsense. Every feature is available to every user, always.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SOURCES -->
 <section class="sources-section">
   <div class="screenshot-label">Supported sources</div>
@@ -629,17 +673,6 @@ body {
     <div class="source-pill"><span class="source-dot"></span> Apple Music</div>
     <div class="source-pill"><span class="source-dot"></span> SoundCloud</div>
     <div class="source-pill no">✕ No YouTube — by design</div>
-  </div>
-</section>
-
-<!-- FREE -->
-<section class="free-section">
-  <div class="free-card">
-    <div class="free-card-emoji">🎵</div>
-    <div>
-      <strong>100% Free. No paywalls.</strong>
-      <p>No vote-locking, no premium tiers, no nonsense. Every feature is available to every user, always.</p>
-    </div>
   </div>
 </section>
 
