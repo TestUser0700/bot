@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MusikBot — Music done properly.</title>
-    <meta name="description" content="A free Discord music bot with a live player, custom playlists, listening profiles, and full DJ controls. Supports Spotify, Apple Music and SoundCloud.">
+    <meta name="description"
+        content="A free Discord music bot with a live player, custom playlists, listening profiles, and full DJ controls. Supports Spotify, Apple Music and SoundCloud.">
     <meta property="og:title" content="MusikBot — Music done properly.">
-    <meta property="og:description" content="A free Discord music bot built for the modern API. Button-driven interface, custom playlists, listening profiles.">
+    <meta property="og:description"
+        content="A free Discord music bot built for the modern API. Button-driven interface, custom playlists, listening profiles.">
     <meta property="og:type" content="website">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
@@ -46,14 +48,23 @@
 
         /* ANIMATIONS */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .reveal {
             opacity: 0;
             transform: translateY(24px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
+
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
@@ -113,7 +124,10 @@
             font-weight: 500;
             transition: color 0.15s;
         }
-        .nav-link:hover { color: #fff; }
+
+        .nav-link:hover {
+            color: #fff;
+        }
 
         .nav-invite {
             background: var(--green);
@@ -216,8 +230,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
         /* SECTION SHARED */
@@ -382,7 +403,7 @@
         .screenshot-item:hover {
             transform: translateY(-4px);
             border-color: var(--green-border);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
         }
 
         .screenshot-item img {
@@ -404,6 +425,7 @@
             .screenshot-grid {
                 grid-template-columns: 1fr;
             }
+
             .screenshot-main {
                 grid-column: 1;
             }
@@ -579,6 +601,7 @@
         .highlight-row.reversed .highlight-media {
             order: 2;
         }
+
         .highlight-row.reversed .highlight-text {
             order: 1;
         }
@@ -594,7 +617,7 @@
         .highlight-media:hover {
             transform: translateY(-6px) scale(1.01);
             border-color: var(--green-border);
-            box-shadow: 0 16px 48px rgba(29, 185, 84, 0.08), 0 8px 24px rgba(0,0,0,0.4);
+            box-shadow: 0 16px 48px rgba(29, 185, 84, 0.08), 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
         .highlight-media img {
@@ -643,8 +666,14 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            .highlight-row.reversed .highlight-media { order: 0; }
-            .highlight-row.reversed .highlight-text { order: 0; }
+
+            .highlight-row.reversed .highlight-media {
+                order: 0;
+            }
+
+            .highlight-row.reversed .highlight-text {
+                order: 0;
+            }
         }
 
         /* FREE */
@@ -762,7 +791,10 @@
             text-decoration: none;
             transition: color 0.15s;
         }
-        .footer-links a:hover { color: var(--green); }
+
+        .footer-links a:hover {
+            color: var(--green);
+        }
     </style>
 </head>
 
@@ -797,7 +829,9 @@
         <div class="hero-actions">
             <a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280"
                 class="btn-primary" target="_blank">
-                <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+                </svg>
                 Add to Discord
             </a>
             <div class="hero-pill">
@@ -817,10 +851,12 @@
                 <img src="Media/NowPlaying_loop(1)_25%25_QueueEmpty.png" alt="Now Playing — 25% progress, loop track">
             </div>
             <div class="showcase-card">
-                <img src="Media/NowPlaying_loop(off)_50%25_AutoPlay.png" alt="Now Playing — 50% progress, autoplay active">
+                <img src="Media/NowPlaying_loop(off)_50%25_AutoPlay.png"
+                    alt="Now Playing — 50% progress, autoplay active">
             </div>
             <div class="showcase-card">
-                <img src="Media/NowPlaying_loop(all)_75%25_Queue62Tracks.png" alt="Now Playing — 75% progress, queue loop">
+                <img src="Media/NowPlaying_loop(all)_75%25_Queue62Tracks.png"
+                    alt="Now Playing — 75% progress, queue loop">
             </div>
         </div>
     </section>
@@ -832,37 +868,44 @@
             <div class="feature-card">
                 <span class="feature-card-icon">🎵</span>
                 <strong>Live Player</strong>
-                <p>A real-time now-playing embed with progress bar, album art, and full button-driven playback controls. No slash commands needed — just tap.</p>
+                <p>A real-time now-playing embed with progress bar, album art, and full button-driven playback controls.
+                    No slash commands needed — just tap.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-card-icon">📋</span>
                 <strong>Custom Playlists</strong>
-                <p>Create, save, and manage your own private playlists. They're tied to your account and travel with you to every server that has MusikBot — your library, always at hand.</p>
+                <p>Create, save, and manage your own private playlists. They're tied to your account and travel with you
+                    to every server that has MusikBot — your library, always at hand.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-card-icon">📊</span>
                 <strong>Listening Profiles</strong>
-                <p>A personal profile that travels with you. Earn ranks, see top artists, top tracks, listening streaks, peak hours, and more — all private by default, with full control over what others see.</p>
+                <p>A personal profile that travels with you. Earn ranks, see top artists, top tracks, listening streaks,
+                    peak hours, and more — all private by default, with full control over what others see.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-card-icon">🎛️</span>
                 <strong>DJ Controls</strong>
-                <p>Full playback control — skip, loop, shuffle, seek, volume, queue management, and DJ mode with configurable permissions.</p>
+                <p>Full playback control — skip, loop, shuffle, seek, volume, queue management, and DJ mode with
+                    configurable permissions.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-card-icon">🔍</span>
                 <strong>Smart Search</strong>
-                <p>Search across Spotify, Apple Music and SoundCloud with fuzzy autocomplete. Find and play music without leaving Discord.</p>
+                <p>Search across Spotify, Apple Music and SoundCloud with fuzzy autocomplete. Find and play music
+                    without leaving Discord.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-card-icon">⚡</span>
                 <strong>Context Menus</strong>
-                <p>Right-click integrations — view profiles, play Spotify status, play links, and browse playlists from context menus.</p>
+                <p>Right-click integrations — view profiles, play Spotify status, play links, and browse playlists from
+                    context menus.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-card-icon">⏱️</span>
                 <strong>Smart Seek</strong>
-                <p>Instantly jump to any part of a track using intuitive time formats or intelligent autocomplete suggestions.</p>
+                <p>Instantly jump to any part of a track using intuitive time formats or intelligent autocomplete
+                    suggestions.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-card-icon">🪄</span>
@@ -883,20 +926,23 @@
             <div class="highlight-text">
                 <span class="highlight-icon">📋</span>
                 <h3>Custom Playlists</h3>
-                <p>Your playlists are personal and private — tied to your account, they travel with you to every server with MusikBot. Save individual tracks or entire queues, and always have your library at hand.</p>
+                <p>Your playlists are personal and private — tied to your account, they travel with you to every server
+                    with MusikBot. Save individual tracks or entire queues, and always have your library at hand.</p>
                 <span class="highlight-tag">68 tracks · 3h 28m</span>
             </div>
         </div>
 
         <div class="highlight-row reversed reveal">
             <div class="highlight-media">
-                <img src="Media/ProfileViewWithHiddenSettings.png" alt="Personal listening profile with rank and stats" loading="lazy">
+                <img src="Media/ProfileView.png" alt="Personal listening profile with rank and stats" loading="lazy">
             </div>
             <div class="highlight-text">
                 <span class="highlight-icon">📊</span>
                 <h3>Listening Profiles</h3>
-                <p>Your profile shows everything by default — top 5 artists, top 5 tracks, listening streaks, peak hours, favourite source, and total stats. It's private out of the box, and you control exactly what others can see.</p>
-                <span class="highlight-tag">3,549 plays · Elite Listener</span>
+                <p>Your profile shows everything by default — top 5 artists, top 5 tracks, listening streaks, peak
+                    hours, favourite source, and total stats. It's private out of the box, and you control exactly what
+                    others can see.</p>
+                <span class="highlight-tag">3,590 plays · Elite Listener</span>
             </div>
         </div>
 
@@ -907,7 +953,8 @@
             <div class="highlight-text">
                 <span class="highlight-icon">🎶</span>
                 <h3>Server Queue</h3>
-                <p>A rich queue view showing track details, loop mode, volume, and estimated end time. Jump to any track with the dropdown selector.</p>
+                <p>A rich queue view showing track details, loop mode, volume, and estimated end time. Jump to any track
+                    with the dropdown selector.</p>
                 <span class="highlight-tag">62 tracks · 3h 9m</span>
             </div>
         </div>
@@ -919,19 +966,22 @@
             <div class="highlight-text">
                 <span class="highlight-icon">🎤</span>
                 <h3>Synced Lyrics</h3>
-                <p>Full lyrics display with the current line highlighted. Navigate pages and jump directly to the current playback position.</p>
+                <p>Full lyrics display with the current line highlighted. Navigate pages and jump directly to the
+                    current playback position.</p>
                 <span class="highlight-tag">/lyrics</span>
             </div>
         </div>
 
         <div class="highlight-row reveal">
             <div class="highlight-media">
-                <img src="Media/expandmenu_part0.png" alt="Quick-access expand menu with personal, music and control buttons" loading="lazy">
+                <img src="Media/expandmenu_part0.png"
+                    alt="Quick-access expand menu with personal, music and control buttons" loading="lazy">
             </div>
             <div class="highlight-text">
                 <span class="highlight-icon">⚡</span>
                 <h3>Quick Access Menu</h3>
-                <p>One tap opens a categorised menu — profile, history, playlists, search, lyrics, seek, volume, and autoplay. Everything without typing a single slash command.</p>
+                <p>One tap opens a categorised menu — profile, history, playlists, search, lyrics, seek, volume, and
+                    autoplay. Everything without typing a single slash command.</p>
                 <span class="highlight-tag">9 actions · 0 commands</span>
             </div>
         </div>
@@ -1046,7 +1096,8 @@
             <div class="free-card-emoji">✨</div>
             <div>
                 <strong>Free forever. No strings attached.</strong>
-                <p>No premium tiers. No vote-gating. No paywalled features. Every command, every source, every feature — always free for everyone.</p>
+                <p>No premium tiers. No vote-gating. No paywalled features. Every command, every source, every feature —
+                    always free for everyone.</p>
             </div>
         </div>
     </section>
@@ -1058,7 +1109,9 @@
         <p>Add MusikBot to your server in seconds. No setup, no paywall, no nonsense.</p>
         <a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280"
             class="btn-primary" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+            </svg>
             Add to Discord
         </a>
     </section>
@@ -1067,7 +1120,8 @@
     <footer class="footer">
         <div class="footer-copy">&copy; 2026 MusikBot</div>
         <div class="footer-links">
-            <a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280" target="_blank">Invite</a>
+            <a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280"
+                target="_blank">Invite</a>
             <a href="https://discord.gg/uhempDmQkn" target="_blank">Support Server</a>
         </div>
     </footer>
@@ -1095,4 +1149,5 @@
     </script>
 
 </body>
+
 </html>
