@@ -915,132 +915,138 @@
   </script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://musikbot.app/#software",
-        "name": "MusikBot",
-        "alternateName": "Musik Bot",
-        "url": "https://musikbot.app",
-        "applicationCategory": "MultimediaApplication",
-        "applicationSubCategory": "Discord Music Bot",
-        "operatingSystem": "Discord",
-        "featureList": [
-          "Live now-playing embed with progress bar and album art",
-          "Adaptive album art color themes",
-          "Canvas, Classic, and Minimal player layouts",
-          "Custom playlists saved to your account",
-          "Listening profiles with stats, streaks, and rankings",
-          "Spotify, Apple Music, and SoundCloud search",
-          "DJ mode and full queue management",
-          "Fuzzy autocomplete search",
-          "Discord context menu controls"
-        ],
-        "brand": {
-          "@type": "Brand",
-          "name": "MusikBot"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "description": "Free forever with no paywalls or vote-gating"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "1250"
-        }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://musikbot.app/#software",
+      "name": "MusikBot",
+      "alternateName": ["Musik Bot", "MusikBot Discord Music Bot"],
+      "url": "https://musikbot.app",
+      "description": "MusikBot is a fully featured free Discord music bot with a real-time now playing player, interactive controls, adaptive album art themes, playlists, and listening profiles. It supports multi-source playback from Spotify, Apple Music, and SoundCloud with no premium tiers, no paywalls, and no locked features.",
+      "applicationCategory": "MusicApplication",
+      "applicationSubCategory": "Discord Music Bot",
+      "operatingSystem": "Discord",
+      "featureList": [
+        "Free Discord music bot with no premium tiers or paywalls",
+        "Real-time now playing Discord music player with progress bar and album art",
+        "Interactive button-driven music controls without slash commands",
+        "Adaptive color themes that match album artwork",
+        "Canvas, Classic, and Minimal player layouts",
+        "Custom playlists saved to your Discord account",
+        "Persistent listening profiles with stats, streaks, and rankings",
+        "Multi-source music playback from Spotify, Apple Music, and SoundCloud",
+        "Fast music search with fuzzy autocomplete",
+        "Queue management with skip, loop, shuffle, and seek controls",
+        "Discord context menu music controls",
+        "Modern app-like interface inside Discord",
+        "High-performance music playback with optimized infrastructure",
+        "Reliable Discord music bot with consistent uptime and fast response"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "MusikBot"
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://musikbot.app/#website",
-        "url": "https://musikbot.app",
-        "name": "MusikBot",
-        "description": "Free Discord music bot with live player, adaptive themes, playlists, and listening profiles."
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Completely free Discord music bot with no premium features, no subscriptions, and no vote-gating"
       },
-      {
-        "@type": "FAQPage",
-        "@id": "https://musikbot.app/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is MusikBot free?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. MusikBot is completely free forever with no paywalls, no premium tiers, and no vote-gating. Every feature is available to all users."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What music sources does MusikBot support?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "MusikBot supports searching and playing music from Spotify, Apple Music, and SoundCloud directly inside Discord."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I add MusikBot to my Discord server?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Click the 'Add to Discord' button on musikbot.app and authorize MusikBot through Discord's OAuth flow. It takes under a minute."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does MusikBot require slash commands?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. MusikBot is button-driven — the live player embed gives you full playback control without typing a single slash command."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I save playlists in MusikBot?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. MusikBot supports fully custom playlists tied to your Discord account. They follow you across every server you use MusikBot in."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are listening profiles?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Listening profiles track your top artists, listening streaks, peak hours, and earned ranks. They are private by default and viewable with the /profile command."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What player themes does MusikBot have?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "MusikBot offers three player layouts — Canvas, Classic, and Minimal — each with adaptive color theming that automatically pulls accent colors from the current track's album art."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does MusikBot have DJ mode?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. MusikBot includes a configurable DJ mode with full controls — skip, loop, shuffle, seek, volume, and complete queue management."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is MusikBot the best free Discord music bot in 2026?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "MusikBot is one of the most feature-complete free Discord music bots available in 2026, offering a live now-playing embed, adaptive themes, custom playlists, listening profiles, and multi-source search — all with zero paywalls."
-            }
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://schema.org/InstallAction",
+        "userInteractionCount": "50000"
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://musikbot.app/#website",
+      "url": "https://musikbot.app",
+      "name": "MusikBot",
+      "description": "Free Discord music bot with a real-time player, adaptive themes, playlists, and listening profiles. No premium tiers, no paywalls, fully featured music bot for Discord servers."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://musikbot.app/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is MusikBot free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MusikBot is completely free forever with no paywalls, no premium tiers, and no locked features. Every feature is available to all users without subscriptions or vote-gating."
           }
-        ]
-      }
-    ]
-  }
+        },
+        {
+          "@type": "Question",
+          "name": "What music sources does MusikBot support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MusikBot supports multi-source music playback including Spotify, Apple Music, and SoundCloud, allowing users to search and play music directly inside Discord."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I add MusikBot to my Discord server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Click the 'Add to Discord' button on musikbot.app and authorize MusikBot through Discord's OAuth flow. Setup takes less than a minute."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MusikBot require slash commands?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MusikBot is a button-driven Discord music bot with interactive controls built directly into the now playing interface, so you can control playback without typing slash commands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I save playlists in MusikBot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MusikBot supports custom playlists that are saved to your Discord account and can be accessed across any server where the bot is installed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are listening profiles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Listening profiles track your music activity including top artists, listening streaks, peak listening times, and rankings. Profiles are persistent and linked to your Discord account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What player themes does MusikBot have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MusikBot includes multiple player layouts such as Canvas, Classic, and Minimal, along with adaptive color themes that automatically match the album artwork of the current track."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MusikBot have DJ mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MusikBot includes a full DJ mode with queue management, skip, loop, shuffle, seek, and volume controls for advanced playback control in Discord servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MusikBot the best free Discord music bot in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MusikBot is one of the most advanced and feature-complete free Discord music bots in 2026, offering a real-time now playing player, adaptive themes, playlists, listening profiles, and multi-source playback with no premium tiers, no paywalls, and no locked features."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </body>
 </html>
