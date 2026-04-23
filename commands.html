@@ -283,57 +283,13 @@
       margin: 0 auto;
     }
 
-    /* category nav sidebar-style pills */
     .commands-layout {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 1fr;
       gap: 40px;
       align-items: start;
     }
 
-    .commands-sidebar {
-      position: sticky;
-      top: calc(var(--nav-height) + 24px);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .sidebar-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding: 0 10px;
-      margin-bottom: 8px;
-    }
-
-    .sidebar-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .sidebar-link:hover { background: var(--surface); color: var(--text); }
-    .sidebar-link.active { background: var(--green-dim); color: var(--green); }
-
-    .sidebar-link-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0.5;
-      flex-shrink: 0;
-    }
-
-    /* right: command groups */
     .commands-content {
       display: flex;
       flex-direction: column;
@@ -489,8 +445,6 @@
       nav { grid-template-columns: 1fr auto; }
       .nav-tabs { display: none; }
       .nav-actions .nav-support { display: none; }
-      .commands-layout { grid-template-columns: 1fr; }
-      .commands-sidebar { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -501,7 +455,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="/" class="nav-logo">
       <img src="./Media/musikbot.png" alt="MusikBot" />
@@ -513,7 +466,7 @@
       <a href="/showcase" class="nav-tab">Showcase</a>
     </div>
     <div class="nav-actions">
-      <a href="https://discord.gg/uhempDmQkn" class="nav-support">Support</a>
+      <a href="https://discord.gg/jgJybrnB6D" class="nav-support">Support</a>
       <a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280" class="nav-cta">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.057a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
         Add to Discord
@@ -521,7 +474,6 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
   <div class="page-header">
     <div class="page-header-glow"></div>
     <div class="page-header-grid"></div>
@@ -530,7 +482,6 @@
     <p class="page-desc">Click any command to copy it instantly. Search to filter across all categories.</p>
   </div>
 
-  <!-- SEARCH -->
   <div class="search-wrap">
     <div class="search-input-wrap">
       <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -539,23 +490,11 @@
     </div>
   </div>
 
-  <!-- COMMANDS -->
   <div class="commands-wrap">
     <div class="commands-layout">
 
-      <!-- Sidebar -->
-      <nav class="commands-sidebar" aria-label="Command categories">
-        <div class="sidebar-label">Categories</div>
-        <a href="#music" class="sidebar-link active"><div class="sidebar-link-dot"></div>Music</a>
-        <a href="#dj" class="sidebar-link"><div class="sidebar-link-dot"></div>DJ Controls</a>
-        <a href="#playlists" class="sidebar-link"><div class="sidebar-link-dot"></div>Playlists</a>
-        <a href="#profiles" class="sidebar-link"><div class="sidebar-link-dot"></div>Profiles & Social</a>
-      </nav>
-
-      <!-- Content -->
       <div class="commands-content" id="commands-content">
 
-        <!-- Music -->
         <div class="command-group" id="music">
           <div class="group-header">
             <h2 class="group-title">Music</h2>
@@ -576,7 +515,6 @@
           </div>
         </div>
 
-        <!-- DJ Controls -->
         <div class="command-group" id="dj">
           <div class="group-header">
             <h2 class="group-title">DJ Controls</h2>
@@ -602,7 +540,6 @@
           </div>
         </div>
 
-        <!-- Playlists -->
         <div class="command-group" id="playlists">
           <div class="group-header">
             <h2 class="group-title">Playlists</h2>
@@ -624,7 +561,6 @@
           </div>
         </div>
 
-        <!-- Profiles & Social -->
         <div class="command-group" id="profiles">
           <div class="group-header">
             <h2 class="group-title">Profiles & Social</h2>
@@ -651,7 +587,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <a href="/" class="footer-logo">
       <img src="./Media/musikbot.png" alt="MusikBot" />
@@ -659,7 +594,7 @@
     </a>
     <ul class="footer-links">
       <li><a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280">Invite</a></li>
-      <li><a href="https://discord.gg/uhempDmQkn">Support Server</a></li>
+      <li><a href="https://discord.gg/jgJybrnB6D">Support Server</a></li>
       <li><a href="https://top.gg/bot/1003565784150315028">top.gg</a></li>
     </ul>
     <span class="footer-copy">© 2026 MusikBot</span>
@@ -709,22 +644,6 @@
         noResults.classList.remove('visible');
       }
     });
-
-    // Sidebar active state on scroll
-    const groups = document.querySelectorAll('.command-group');
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          sidebarLinks.forEach(l => l.classList.remove('active'));
-          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
-          if (active) active.classList.add('active');
-        }
-      });
-    }, { threshold: 0.3, rootMargin: `-${72}px 0px -60% 0px` });
-
-    groups.forEach(g => observer.observe(g));
   </script>
 
 </body>
