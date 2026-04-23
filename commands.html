@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commands — MusikBot</title>
+  <meta name="description" content="Full command reference for MusikBot. Every slash command, organized by category. Click any command to copy it.">
+  <link rel="icon" type="image/png" href="./Media/musikbot.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0f;
+      --surface: #141418;
+      --surface2: #1a1a20;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
+      --green: #23d05e;
+      --green-dim: rgba(35,208,94,0.10);
+      --green-glow: rgba(35,208,94,0.25);
+      --text: #f0f0f2;
+      --text-muted: #6b6b78;
+      --text-mid: #9b9baa;
+      --radius: 16px;
+      --nav-height: 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV (shared) ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 clamp(24px, 5vw, 64px);
+      background: rgba(13,13,15,0.80);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: 0.5;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      justify-self: start;
+    }
+
+    .nav-logo img { width: 28px; height: 28px; }
+
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .nav-tab {
+      position: relative;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 450;
+      font-family: 'DM Sans', sans-serif;
+      padding: 6px 2px;
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease, opacity 0.2s ease;
+      opacity: 0.7;
+    }
+
+    .nav-tab:hover {
+      color: var(--text);
+      opacity: 1;
+    }
+
+    .nav-tab.active {
+      color: var(--text);
+      opacity: 1;
+    }
+
+    .nav-tab::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-tab:hover::after {
+      width: 100%;
+    }
+
+    .nav-tab.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: end;
+    }
+
+    .nav-support {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: color 0.18s, background 0.18s;
+    }
+
+    .nav-support:hover { color: var(--text); background: var(--surface); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--green);
+      color: #000;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13.5px;
+      padding: 8px 18px;
+      border-radius: 9px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px var(--green-glow);
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: calc(var(--nav-height) + 72px) clamp(24px, 5vw, 80px) 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header-glow {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(circle, rgba(35,208,94,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-header-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black, transparent);
+    }
+
+    .page-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      opacity: 0.8;
+      margin-bottom: 14px;
+    }
+
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.0;
+      margin-bottom: 16px;
+    }
+
+    .page-desc {
+      color: var(--text-mid);
+      font-size: 17px;
+      font-weight: 300;
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ─── SEARCH BAR ─── */
+    .search-wrap {
+      padding: 0 clamp(24px, 5vw, 80px) 48px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 16px 13px 44px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input::placeholder { color: var(--text-muted); }
+
+    .search-input:focus {
+      border-color: rgba(35,208,94,0.3);
+      box-shadow: 0 0 0 3px rgba(35,208,94,0.08);
+    }
+
+    .search-count {
+      position: absolute;
+      right: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ─── COMMANDS LAYOUT ─── */
+    .commands-wrap {
+      padding: 0 clamp(24px, 5vw, 80px) 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* category nav sidebar-style pills */
+    .commands-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .commands-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + 24px);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 10px;
+      margin-bottom: 8px;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .sidebar-link:hover { background: var(--surface); color: var(--text); }
+    .sidebar-link.active { background: var(--green-dim); color: var(--green); }
+
+    .sidebar-link-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* right: command groups */
+    .commands-content {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .command-group {
+      scroll-margin-top: calc(var(--nav-height) + 32px);
+    }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .group-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .group-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 2px 9px;
+      border-radius: 100px;
+    }
+
+    .commands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+    }
+
+    .command-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .command-item:hover {
+      background: var(--surface2);
+      border-color: var(--border-hover);
+    }
+
+    .command-item.copied {
+      border-color: rgba(35,208,94,0.4);
+      background: var(--green-dim);
+    }
+
+    .command-slash {
+      font-size: 13px;
+      color: var(--green);
+      font-family: 'DM Mono', 'Fira Mono', monospace;
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .command-name {
+      font-size: 13.5px;
+      font-family: 'DM Mono', 'Fira Mono', monospace;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .command-item.copied .command-name { color: var(--green); }
+
+    .copy-toast {
+      position: absolute;
+      right: 10px;
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.15s;
+      pointer-events: none;
+    }
+
+    .command-item.copied .copy-toast { opacity: 1; }
+
+    /* hidden by search */
+    .command-item.hidden { display: none; }
+    .command-group.empty { display: none; }
+
+    /* ─── NO RESULTS ─── */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .no-results.visible { display: block; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .footer-logo img { width: 24px; height: 24px; }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { grid-template-columns: 1fr auto; }
+      .nav-tabs { display: none; }
+      .nav-actions .nav-support { display: none; }
+      .commands-layout { grid-template-columns: 1fr; }
+      .commands-sidebar { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="./Media/musikbot.png" alt="MusikBot" />
+      MusikBot
+    </a>
+    <div class="nav-tabs">
+      <a href="/#features" class="nav-tab">Features</a>
+      <a href="/commands" class="nav-tab active">Commands</a>
+      <a href="/showcase" class="nav-tab">Showcase</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://discord.gg/uhempDmQkn" class="nav-support">Support</a>
+      <a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280" class="nav-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.057a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Add to Discord
+      </a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-glow"></div>
+    <div class="page-header-grid"></div>
+    <p class="page-label">Full Reference</p>
+    <h1 class="page-title">Every command.</h1>
+    <p class="page-desc">Click any command to copy it instantly. Search to filter across all categories.</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <div class="search-input-wrap">
+      <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="search-input" id="search" type="text" placeholder="Search commands…" autocomplete="off" spellcheck="false" />
+      <span class="search-count" id="search-count"></span>
+    </div>
+  </div>
+
+  <!-- COMMANDS -->
+  <div class="commands-wrap">
+    <div class="commands-layout">
+
+      <!-- Sidebar -->
+      <nav class="commands-sidebar" aria-label="Command categories">
+        <div class="sidebar-label">Categories</div>
+        <a href="#music" class="sidebar-link active"><div class="sidebar-link-dot"></div>Music</a>
+        <a href="#dj" class="sidebar-link"><div class="sidebar-link-dot"></div>DJ Controls</a>
+        <a href="#playlists" class="sidebar-link"><div class="sidebar-link-dot"></div>Playlists</a>
+        <a href="#profiles" class="sidebar-link"><div class="sidebar-link-dot"></div>Profiles & Social</a>
+      </nav>
+
+      <!-- Content -->
+      <div class="commands-content" id="commands-content">
+
+        <!-- Music -->
+        <div class="command-group" id="music">
+          <div class="group-header">
+            <h2 class="group-title">Music</h2>
+            <span class="group-count">11 commands</span>
+          </div>
+          <div class="commands-grid">
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">play</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">search</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">queue</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">nowplaying</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">lyrics</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">autoplay</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">voteskip</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">join</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playhistory</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">history mine</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">history server</span><span class="copy-toast">Copied</span></div>
+          </div>
+        </div>
+
+        <!-- DJ Controls -->
+        <div class="command-group" id="dj">
+          <div class="group-header">
+            <h2 class="group-title">DJ Controls</h2>
+            <span class="group-count">16 commands</span>
+          </div>
+          <div class="commands-grid">
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">skip</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">pause</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">resume</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">stop</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">loop</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">shuffle</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">seek</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">volume</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playtop</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playskip</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">previous</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">jump</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">skipto</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">move</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">clearqueue</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">leave</span><span class="copy-toast">Copied</span></div>
+          </div>
+        </div>
+
+        <!-- Playlists -->
+        <div class="command-group" id="playlists">
+          <div class="group-header">
+            <h2 class="group-title">Playlists</h2>
+            <span class="group-count">12 commands</span>
+          </div>
+          <div class="commands-grid">
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playlist create</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playlist add</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playlist view</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playlist list</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playlist delete</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playlist remove track</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">playlist remove duplicates</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">play-playlist</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">save track</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">save queue</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">export</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">import</span><span class="copy-toast">Copied</span></div>
+          </div>
+        </div>
+
+        <!-- Profiles & Social -->
+        <div class="command-group" id="profiles">
+          <div class="group-header">
+            <h2 class="group-title">Profiles & Social</h2>
+            <span class="group-count">11 commands</span>
+          </div>
+          <div class="commands-grid">
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">profile</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">manage-profile</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">leaderboard</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">bot-stats</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">dj list</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">help</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">feedback</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">changelog</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">settings djmode</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">settings config</span><span class="copy-toast">Copied</span></div>
+            <div class="command-item" onclick="copy(this)"><span class="command-slash">/</span><span class="command-name">settings theme</span><span class="copy-toast">Copied</span></div>
+          </div>
+        </div>
+
+        <div class="no-results" id="no-results">No commands match "<span id="no-results-term"></span>"</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/" class="footer-logo">
+      <img src="./Media/musikbot.png" alt="MusikBot" />
+      MusikBot
+    </a>
+    <ul class="footer-links">
+      <li><a href="https://discord.com/oauth2/authorize?client_id=1003565784150315028&scope=bot&permissions=414468009280">Invite</a></li>
+      <li><a href="https://discord.gg/uhempDmQkn">Support Server</a></li>
+      <li><a href="https://top.gg/bot/1003565784150315028">top.gg</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 MusikBot</span>
+  </footer>
+
+  <script>
+    // Copy command
+    function copy(el) {
+      const name = el.querySelector('.command-name').textContent.trim();
+      const full = '/' + name;
+      navigator.clipboard.writeText(full).then(() => {
+        el.classList.add('copied');
+        setTimeout(() => el.classList.remove('copied'), 1200);
+      });
+    }
+
+    // Search
+    const searchInput = document.getElementById('search');
+    const searchCount = document.getElementById('search-count');
+    const noResults = document.getElementById('no-results');
+    const noResultsTerm = document.getElementById('no-results-term');
+    const allItems = document.querySelectorAll('.command-item');
+    const allGroups = document.querySelectorAll('.command-group');
+
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+
+      allItems.forEach(item => {
+        const name = item.querySelector('.command-name').textContent.toLowerCase();
+        const match = !q || name.includes(q);
+        item.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+
+      allGroups.forEach(group => {
+        const hasVisible = [...group.querySelectorAll('.command-item')].some(i => !i.classList.contains('hidden'));
+        group.classList.toggle('empty', !hasVisible);
+      });
+
+      if (q) {
+        searchCount.textContent = `${visible} result${visible !== 1 ? 's' : ''}`;
+        noResultsTerm.textContent = q;
+        noResults.classList.toggle('visible', visible === 0);
+      } else {
+        searchCount.textContent = '';
+        noResults.classList.remove('visible');
+      }
+    });
+
+    // Sidebar active state on scroll
+    const groups = document.querySelectorAll('.command-group');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          sidebarLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3, rootMargin: `-${72}px 0px -60% 0px` });
+
+    groups.forEach(g => observer.observe(g));
+  </script>
+
+</body>
+</html>
