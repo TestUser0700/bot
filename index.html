@@ -103,7 +103,7 @@
     .nav-tabs {
       display: flex;
       align-items: center;
-      gap: 18px; /* more breathing room instead of tight pills */
+      gap: 18px;
       background: transparent;
       border: none;
       padding: 0;
@@ -115,9 +115,9 @@
       color: var(--text-muted);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 450; /* slightly lighter than default */
+      font-weight: 450;
       font-family: 'DM Sans', sans-serif;
-      padding: 6px 2px; /* minimal padding */
+      padding: 6px 2px;
       letter-spacing: 0.02em;
       transition: color 0.2s ease, opacity 0.2s ease;
       opacity: 0.7;
@@ -135,7 +135,6 @@
       opacity: 1;
     }
 
-    /* subtle underline indicator */
     .nav-tab::after {
       content: "";
       position: absolute;
@@ -764,26 +763,39 @@
     }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      nav { grid-template-columns: 1fr auto; }
-      .nav-tabs { display: none; }
-      .nav-mobile-cta { display: flex; }
-      .nav-actions .nav-support { display: none; }
-
+    @media (max-width: 700px) {
       .feature-row {
         grid-template-columns: 1fr;
         gap: 40px;
         padding: 60px 0;
       }
       .feature-row.reverse { direction: ltr; }
+      
+      .feature-visual {
+        max-width: 400px;
+        margin: 0 auto;
+        width: 100%;
+      }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 650px) {
+      nav { grid-template-columns: 1fr auto; }
+      .nav-tabs { display: center; }
+      .nav-mobile-cta { display: none; }
+      .nav-cta { display: none;}
+      .nav-actions .nav-support { display: none; }
+      
       .canvas-gallery { grid-template-columns: 1fr; gap: 16px; }
       .themes-grid { grid-template-columns: 1fr; }
       .screenshots-scroll { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: flex-start; gap: 20px; }
       .footer-links { flex-wrap: wrap; gap: 16px; }
+
+      .canvas-card, .theme-card, .screenshot-card {
+        max-width: 450px;
+        margin: 0 auto;
+        width: 100%;
+      }
     }
 
     @media (max-width: 480px) {
