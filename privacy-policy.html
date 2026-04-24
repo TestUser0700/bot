@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — MusikBot</title>
+
+  <link rel="icon" type="image/png" href="./Media/musikbot.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0f;
+      --surface: #141418;
+      --border: rgba(255,255,255,0.06);
+      --text: #f0f0f2;
+      --text-muted: #6b6b78;
+      --green: #23d05e;
+      --radius: 14px;
+      --nav-height: 72px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(13,13,15,0.8);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+    }
+
+    .nav-logo img { width: 26px; }
+
+    .nav-home {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-home:hover { color: var(--text); }
+
+    /* LAYOUT */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: calc(var(--nav-height) + 80px) 24px 100px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 52px;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      margin-bottom: 50px;
+      font-size: 15px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      margin-top: 40px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 17px;
+      font-size: 17px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    ul {
+      padding-left: 18px;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px clamp(24px, 5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .footer-logo img { width: 24px; height: 24px; }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="./Media/musikbot.png" alt="MusikBot">
+      MusikBot
+    </a>
+
+    <a href="/" class="nav-home">Back to home</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Last updated: April 2026</p>
+
+    <div class="card">
+      <p>
+        This Privacy Policy explains how MusikBot collects, uses, and protects your information when you use the service.
+      </p>
+    </div>
+
+    <h2>1. Information We Collect</h2>
+    <div class="card">
+      <p>We may collect the following data:</p>
+      <ul>
+        <li>Discord user ID</li>
+        <li>Server (guild) ID</li>
+        <li>Playback activity (tracks, artists, timestamps)</li>
+        <li>Usage statistics for features</li>
+      </ul>
+    </div>
+
+    <h2>2. How We Use Data</h2>
+    <div class="card">
+      <ul>
+        <li>Provide music playback functionality</li>
+        <li>Generate listening profiles and stats</li>
+        <li>Improve performance and features</li>
+        <li>Prevent abuse and misuse</li>
+      </ul>
+    </div>
+
+    <h2>3. Data Storage</h2>
+    <div class="card">
+      <p>
+        Data is stored securely and only retained as long as necessary to provide the service.
+      </p>
+    </div>
+
+    <h2>4. Data Sharing</h2>
+    <div class="card">
+      <p>
+        We do not sell, trade, or share your personal data with third parties.
+      </p>
+    </div>
+
+    <h2>5. User Control</h2>
+    <div class="card">
+      <ul>
+        <li>Users may access, or delete their personal data at any time by using the <b>/manage-profile</b> command directly within the bot interface</li>
+      </ul>
+    </div>
+
+    <h2>6. Security</h2>
+    <div class="card">
+      <p>
+        We take reasonable measures to protect your data, but no system is 100% secure.
+      </p>
+    </div>
+
+    <h2>7. Changes</h2>
+    <div class="card">
+      <p>
+        This policy may be updated. Continued use of MusikBot means you accept any changes.
+      </p>
+    </div>
+
+    <h2>8. Contact</h2>
+    <div class="card">
+      <p>
+        For questions or requests, join our <a href="https://discord.gg/jgJybrnB6D">support server</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">
+      <img src="./Media/musikbot.png" alt="MusikBot" />
+      MusikBot
+    </a>
+    <ul class="footer-links">
+      <li><a href="https://discord.com/oauth2/authorize?client_id=848101659665891329&scope=bot&permissions=414468009280">Invite</a></li>
+      <li><a href="https://discord.gg/jgJybrnB6D">Support Server</a></li>
+      <li><a href="/terms-of-service">Terms</a></li>
+      <li><a href="/privacy-policy">Privacy</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 MusikBot</span>
+  </footer>
+
+</body>
+</html>
