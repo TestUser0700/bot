@@ -57,15 +57,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    nav::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 120px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--green), transparent);
-      opacity: 0.5;
-    }
-
     .nav-logo {
       display: flex;
       align-items: center;
@@ -523,7 +514,13 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ─── RESPONSIVE ─── */
+
+    @media (max-width: 900px) {
+      .nav-support { display: none; }
+    }
+
     @media (max-width: 700px) {
+      .nav-support { display: none; }
       .canvas-gallery { grid-template-columns: 1fr 1fr; }
       .screenshots-grid { grid-template-columns: 1fr 1fr; }
     }
